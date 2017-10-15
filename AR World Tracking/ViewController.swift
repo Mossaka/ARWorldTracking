@@ -30,9 +30,13 @@ class ViewController: UIViewController {
         let node = SCNNode()
         // chamferRadius - corner. 0.1/2 makes a sphere.
         let length = CGFloat(0.05)
-        node.geometry = SCNBox(width: length, height: length, length: length, chamferRadius: length/2)
-        // firstMaterial is the appearance of the node
-        // specular is the light reflected on the node (need autoenablesDefaultLighting for it to work
+        /* firstMaterial is the appearance of the node
+         specular is the light reflected on the node (need autoenablesDefaultLighting for it to work */
+        
+        node.geometry = SCNSphere(radius: 0.1)
+//        node.geometry = SCNCone(topRadius: 0.1, bottomRadius: 0.3, height: 0.3)
+//        node.geometry = SCNCapsule(capRadius: 0.1, height: 0.3)
+//        node.geometry = SCNBox(width: CGFloat(length, height: length, length: length, chamferRadius: length/2)
         node.geometry?.firstMaterial?.specular.contents = UIColor.white
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.cyan
         let x = randomNumbers(firstNum: -0.3, secondNum: 0.3)
