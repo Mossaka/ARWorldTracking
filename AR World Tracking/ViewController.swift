@@ -40,6 +40,7 @@ class ViewController: UIViewController {
         path.addLine(to: CGPoint(x: 0.4, y: 0.2))
         let shape = SCNShape(path: path, extrusionDepth: 0.2)
         node.geometry = shape
+        node.eulerAngles = SCNVector3(90 * Double.pi * 180, 0, 0)
 //        node.geometry = SCNPyramid(width: 0.1, height: 0.1, length: 0.1)
 //        node.geometry = SCNPlane(width: 0.1, height: 0.1)
 //        node.geometry = SCNTorus(ringRadius: 0.02, pipeRadius: 0.05)
@@ -55,6 +56,7 @@ class ViewController: UIViewController {
         let z = randomNumbers(firstNum: -0.3, secondNum: 0.3)
         node.position = SCNVector3(x,y,z) // the node is 0 meter from x, y and z axis.
         sceneView.scene.rootNode.addChildNode(node)
+        // for the relative positioning, we can just put the node as the child node of another node.
     }
     
     /*
@@ -64,5 +66,10 @@ class ViewController: UIViewController {
         return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
     }
     
+}
+
+extension Int {
+    
+    var degreesToRadians: Double { return Double(self) * .pi/180}
 }
 
